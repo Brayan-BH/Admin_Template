@@ -238,7 +238,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Dashboard</h1>
+            <h1>Usuarios</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -257,17 +257,16 @@
          
          <div class="col-12">
 
-          <!-- <table id="listUsuarios" class="display">
+          <table id="listProducts" class="display">
         <thead>
                   <tr>
+                      <th>Codigo</th>
                       <th>Nombre</th>
-                      <th>Apellidos</th>
-                      <th>Correo</th>
-                      <th>Rol</th>
-                      <th>Estado</th>
+                      <th>Categoria</th>
+                      <th>Precio</th>
                   </tr>
               </thead>
-      </table> -->
+      </table>
 
     </div>
 
@@ -311,30 +310,29 @@
 
 
 
-<!-- <script type="text/javascript">
+<script type="text/javascript">
   
 $(document).ready(function(){
 
 
-$('#listUsuarios').DataTable( {
+$('#listProducts').DataTable( {
         "ajax":{
             type: 'get',
-            url: "http://miapi.com/Public_html/api/v1/usuarios",
+            url: "http://web.miapp.com/api/v1/productos",
             dataSrc: 'data',
             cache: true
             },
         columns: [
+            { data: 'codigo' },
             { data: 'nombre' },
-            { data: 'apellidos' },
-            { data: 'correo' },
-            { data: 'rol' },
-            { data: 'estado' }
+            { data: 'categoria' },
+            { data: 'precio' }
         ]
 
     });
 });
 
-</script> -->
+</script>
 
 
 </body>
