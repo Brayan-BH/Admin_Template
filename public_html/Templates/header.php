@@ -16,7 +16,6 @@
   <link rel="stylesheet" href="/assets/css/adminlte.min.css">
 
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
-  
 
 </head>
 
@@ -193,7 +192,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="home.html" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -203,7 +202,7 @@
             
           </li>
           <li class="nav-item">
-            <a href="usuarios.html" class="nav-link active">
+            <a href="usuarios.php" class="nav-link active">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Usuarios
@@ -212,7 +211,7 @@
           </li>
        
           <li class="nav-item">
-            <a href="productos.html" class="nav-link active">
+            <a href="productos.php" class="nav-link active">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Productos
@@ -230,112 +229,3 @@
     <!-- /.sidebar -->
   </aside>
 
-
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Usuarios</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Usuarios</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-         
-         <div class="col-12">
-
-          <table id="listUsuarios" class="display">
-        <thead>
-                  <tr>
-                      <th>Nombre</th>
-                      <th>Apellidos</th>
-                      <th>Correo</th>
-                      <th>Rol</th>
-                      <th>Estado</th>
-                  </tr>
-              </thead>
-      </table>
-
-    </div>
-
-        </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-
-
-
-
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.2.0
-    </div>
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-  </footer>
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
-
-<!-- jQuery -->
-<script src="/assets/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- jQuery UI -->
-<script src="/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- AdminLTE App -->
-<script src="/assets/js/adminlte.min.js"></script>
-
-
-<script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-
-
-
-<script type="text/javascript">
-  
-$(document).ready(function(){
-
-
-$('#listUsuarios').DataTable( {
-        "ajax":{
-            type: 'get',
-            url: "http://miapi.com/Public_html/api/v1/usuarios",
-            dataSrc: 'data',
-            cache: true
-            },
-        columns: [
-            { data: 'nombre' },
-            { data: 'apellidos' },
-            { data: 'correo' },
-            { data: 'rol' },
-            { data: 'estado' }
-        ]
-    });
-});
-
-</script>
-
-
-</body>
-</html>
