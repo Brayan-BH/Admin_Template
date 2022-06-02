@@ -70,7 +70,8 @@ $('#listUsuarios').DataTable( {
             { data: 'estado' }
         ]
     });
-    function guardarUsuario()
+});
+function guardarUsuario()
     {
       $.ajax({
         method: 'POST',
@@ -85,6 +86,5 @@ $('#listUsuarios').DataTable( {
         console.log(response)
       });
     }
-});
 
 </script>
