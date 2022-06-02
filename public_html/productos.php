@@ -6,9 +6,14 @@
 <div class="content-wrapper">
     <!-- Main content -->
     <section class="content">
+        <h1>Productos</h1>
+        <div class="mb-3">
+            <button class="btn btn-success" id="addUser" name="addUser">Agregar</button>
+            <button class="btn btn-warning">Actualizar</button>
+            <button class="btn btn-danger">Eliminar</button>
+        </div>
       <div class="container-fluid">
         <!-- /.row -->
-        <h1>Productos</h1>
         <div class="col-12">
             <table id="listProductos" class="display">
                 <thead>

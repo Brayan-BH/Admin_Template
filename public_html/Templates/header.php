@@ -191,19 +191,18 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item menu-open">
+            <a href="home.php" class="nav-link active" style="background: #ae2012">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
-               
               </p>
             </a>
             
           </li>
           <li class="nav-item">
-            <a href="usuarios.php" class="nav-link active">
-              <i class="nav-icon fas fa-th"></i>
+            <a href="usuarios.php" class="nav-link ">
+              <i class="nav-icon fas fa-users"></i>
               <p>
                 Usuarios
               </p>
@@ -211,8 +210,8 @@
           </li>
        
           <li class="nav-item">
-            <a href="productos.php" class="nav-link active">
-              <i class="nav-icon fas fa-th"></i>
+            <a href="productos.php" class="nav-link">
+              <i class="nav-icon fas fa-store"></i>
               <p>
                 Productos
               </p>
