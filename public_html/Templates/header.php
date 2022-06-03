@@ -22,7 +22,7 @@
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-info navbar-light" style="background-color: #38a3a5">
+  <nav class="main-header navbar navbar-expand navbar-info navbar-light" style="background-color: #ef233c">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -224,10 +224,15 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="ventas.php" class="nav-link">
+              <i class="nav-icon fas fa-shopping-cart"></i>
+              <p>
+                Ventas
+              </p>
+            </a>
+          </li>
        
-
-
-
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

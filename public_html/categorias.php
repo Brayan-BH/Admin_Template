@@ -20,6 +20,8 @@
                     <tr>
                         <th>Codigo</th>
                         <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>Estado</th>
                     </tr>
                 </thead>
             </table>
@@ -29,6 +31,10 @@
             <label for="txtCodigo">Codigo</label>
             <input type="text" name="txtNombre" id="txtNombre">
             <label for="txtApellidos">Nombre</label>
+            <input type="text" name="txtDescripcion" id="txtDescripcion">
+            <label for="txtApellidos">Descripcion</label>
+            <input type="text" name="txtEStado" id="txtEStado">
+            <label for="txtApellidos">Estado</label>
         </div>
       <!-- /.container-fluid -->
     </section>
@@ -54,6 +60,8 @@ $('#listCategoria').DataTable( {
         columns: [
             { data: 'codigo' },
             { data: 'nombre' },
+            { data: 'descripcion' },
+            { data: 'estado' },
         ]
 
     });
@@ -64,7 +72,7 @@ function guardarCategory()
         
       $.ajax({
         method: 'POST',
-        data : {codigo: $('#txtCodigo').val(), nombre: $('#txtNombre').val()},
+        data : {codigo: $('#txtCodigo').val(), nombre: $('#txtNombre').val(),descripcion: $('#txtDescripcion').val(),estado: $('#txtEStado').val()},
         url: 'http://web.miapp.com/api/v1/categorias',
       }).done(function (response) {
         for (i = 0; i < response.data.length; i++) 

@@ -21,7 +21,9 @@
                         <th>Codigo</th>
                         <th>Nombre</th>
                         <th>Categoria</th>
+                        <th>Descripcion</th>
                         <th>Precio</th>
+                        
                     </tr>
                 </thead>
             </table>
@@ -33,6 +35,8 @@
             <label for="txtApellidos">Nombre</label>
             <input type="text" name="txtCategoria" id="txtCategoria">
             <label for="txtCategoria">Categoria</label>
+            <input type="text" name="txtDescripcion" id="txtDescripcion">
+            <label for="txtDescripcion">Descripcion</label>
             <input type="text" name="txtPrecio" id="txtPrecio">
             <label for="txtPrecio">Precio</label>
         </div>
@@ -61,6 +65,7 @@ $('#listProductos').DataTable( {
             { data: 'codigo' },
             { data: 'nombre' },
             { data: 'categoria' },
+            { data: 'descripcion' },
             { data: 'precio' },
         ]
 
@@ -72,7 +77,7 @@ function guardarProduct()
         
       $.ajax({
         method: 'POST',
-        data : {codigo: $('#txtCodigo').val(), nombre: $('#txtNombre').val(),categoria: $('#txtCategoria').val(),precio: $('#txtPrecio').val()},
+        data : {codigo: $('#txtCodigo').val(), nombre: $('#txtNombre').val(),categoria: $('#txtCategoria').val(), descripcion: $('#txtDescripcion').val(), precio: $('#txtPrecio').val()},
         url: 'http://web.miapp.com/api/v1/productos',
       }).done(function (response) {
         for (i = 0; i < response.data.length; i++) 

@@ -17,7 +17,7 @@
         <!-- /.row -->
         <div class="col-12">
             <table id="listUsuarios" class="display">
-                <thead>
+                <thead style="background-color: #cce3de;">
                     <tr>
                         <th>Nombre</th>
                         <th>Apellidos</th>

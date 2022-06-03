@@ -1,8 +1,4 @@
 
-  
-
-
-
 
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
@@ -30,7 +26,6 @@
 
 
 <script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-
 
 </body>
 </html>
