@@ -208,12 +208,19 @@
               </p>
             </a>
           </li>
-       
           <li class="nav-item">
             <a href="productos.php" class="nav-link">
               <i class="nav-icon fas fa-store"></i>
               <p>
                 Productos
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="categorias.php" class="nav-link">
+              <i class="nav-icon fas fa-list-alt"></i>
+              <p>
+                Categorias
               </p>
             </a>
           </li>

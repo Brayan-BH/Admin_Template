@@ -11,6 +11,7 @@
             <button class="btn btn-success" onclick="guardarUsuario()">Agregar</button>
             <button class="btn btn-warning">Actualizar</button>
             <button class="btn btn-danger">Eliminar</button>
+
         </div>
       <div class="container-fluid">
         <!-- /.row -->
@@ -71,6 +72,7 @@ $('#listUsuarios').DataTable( {
         ]
     });
 });
+
 function guardarUsuario()
     {
       $.ajax({
@@ -86,5 +88,7 @@ function guardarUsuario()
         console.log(response)
       });
     }
+  
+
 
 </script>

@@ -6,22 +6,20 @@
 <div class="content-wrapper">
     <!-- Main content -->
     <section class="content">
-        <h1>Productos</h1>
+        <h1>Categorias</h1>
         <div class="mb-3">
-            <button class="btn btn-success" onclick="guardarProduct()">Agregar</button>
+            <button class="btn btn-success" onclick="guardarCategory()">Agregar</button>
             <button class="btn btn-warning">Actualizar</button>
             <button class="btn btn-danger">Eliminar</button>
         </div>
       <div class="container-fluid">
         <!-- /.row -->
         <div class="col-12">
-            <table id="listProductos" class="display">
+            <table id="listCategoria" class="display">
                 <thead>
                     <tr>
                         <th>Codigo</th>
                         <th>Nombre</th>
-                        <th>Categoria</th>
-                        <th>Precio</th>
                     </tr>
                 </thead>
             </table>
@@ -31,10 +29,6 @@
             <label for="txtCodigo">Codigo</label>
             <input type="text" name="txtNombre" id="txtNombre">
             <label for="txtApellidos">Nombre</label>
-            <input type="text" name="txtCategoria" id="txtCategoria">
-            <label for="txtCategoria">Categoria</label>
-            <input type="text" name="txtPrecio" id="txtPrecio">
-            <label for="txtPrecio">Precio</label>
         </div>
       <!-- /.container-fluid -->
     </section>
@@ -50,30 +44,28 @@
   
 $(document).ready(function(){
 
-$('#listProductos').DataTable( {
+$('#listCategoria').DataTable( {
         "ajax":{
             type: 'get',
-            url: "http://web.miapp.com/api/v1/productos",
+            url: "http://web.miapp.com/api/v1/categorias",
             dataSrc: 'data',
             cache: true
             },
         columns: [
             { data: 'codigo' },
             { data: 'nombre' },
-            { data: 'categoria' },
-            { data: 'precio' },
         ]
 
     });
 });
 
-function guardarProduct()
+function guardarCategory()
     {
         
       $.ajax({
         method: 'POST',
-        data : {codigo: $('#txtCodigo').val(), nombre: $('#txtNombre').val(),categoria: $('#txtCategoria').val(),precio: $('#txtPrecio').val()},
-        url: 'http://web.miapp.com/api/v1/productos',
+        data : {codigo: $('#txtCodigo').val(), nombre: $('#txtNombre').val()},
+        url: 'http://web.miapp.com/api/v1/categorias',
       }).done(function (response) {
         for (i = 0; i < response.data.length; i++) 
         {
