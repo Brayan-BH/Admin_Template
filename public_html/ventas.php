@@ -7,11 +7,11 @@
     <!-- Main content -->
     <section class="content">
         <h1>Ventas</h1>
-        <div class="mb-3">
+        <!-- <div class="mb-3">
             <button class="btn btn-success" onclick="guardarVenta()">Agregar</button>
             <button class="btn btn-warning">Actualizar</button>
             <button class="btn btn-danger">Eliminar</button>
-        </div>
+        </div> -->
       <div class="container-fluid">
         <!-- /.row -->
         <div class="col-12">
@@ -32,7 +32,7 @@
                 </thead>
             </table>
       </div>
-      <div class="col-4">
+      <!-- <div class="col-4">
             <input type="text" name="txtCodVenta" id="txtCodVenta">
             <label for="txtCodVenta">Codigo Venta</label>
             <input type="text" name="txtProducto" id="txtProducto">
@@ -53,7 +53,7 @@
             <label for="txtNombreCliente">Nombre Cliente</label>
             <input type="text" name="txtDocumentoIdentidad" id="txtDocumentoIdentidad">
             <label for="txtDocumentoIdentidad">Documento Identidad</label>
-        </div>
+        </div> -->
       <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
@@ -85,6 +85,11 @@ $('#listVentas').DataTable( {
             { data: 'metodo_pago' },
             { data: 'nombre_cliente' },
             { data: 'documento_identidad' },
+        ],
+
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
         ]
 
     });

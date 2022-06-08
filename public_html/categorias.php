@@ -7,11 +7,11 @@
     <!-- Main content -->
     <section class="content">
         <h1>Categorias</h1>
-        <div class="mb-3">
+        <!-- <div class="mb-3">
             <button class="btn btn-success" onclick="guardarCategory()">Agregar</button>
             <button class="btn btn-warning">Actualizar</button>
             <button class="btn btn-danger">Eliminar</button>
-        </div>
+        </div> -->
       <div class="container-fluid">
         <!-- /.row -->
         <div class="col-12">
@@ -26,7 +26,7 @@
                 </thead>
             </table>
       </div>
-      <div class="col-4">
+      <!-- <div class="col-4">
             <input type="text" name="txtCodigo" id="txtCodigo">
             <label for="txtCodigo">Codigo</label>
             <input type="text" name="txtNombre" id="txtNombre">
@@ -35,7 +35,7 @@
             <label for="txtApellidos">Descripcion</label>
             <input type="text" name="txtEStado" id="txtEStado">
             <label for="txtApellidos">Estado</label>
-        </div>
+        </div> -->
       <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
@@ -62,7 +62,13 @@ $('#listCategoria').DataTable( {
             { data: 'nombre' },
             { data: 'descripcion' },
             { data: 'estado' },
-        ]
+        ],
+
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+]
+
 
     });
 });
