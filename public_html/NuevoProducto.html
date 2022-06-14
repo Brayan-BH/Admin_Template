@@ -1,0 +1,168 @@
+
+  <div class="modal fade" id="modal1">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Registro de Productos</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="false">&times;</span>
+            </button>
+          </div>
+        <div class="modal-body">
+
+          <!-- form start -->
+          <form  id="Producto">
+            <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-5">
+                  <div class="form-group">
+                    <label for="txtCodigo">Codigo</label>
+                    <input type="text" name="txtCodigo" class="form-control" id="txtCodigo" placeholder="Ingrese el codigo">
+                  </div>
+                </div>
+
+                <div class="col-7">
+                    <div class="form-group">
+                      <label for="txtNombre">Nombre</label>
+                      <input type="text" name="txtNombre" class="form-control" id="txtNombre" placeholder="Ingrese el Nombre">
+                    </div>
+                  </div>
+
+                  <div class="col-5">
+                  <div class="form-group">
+                      <label for="txtCategoria">Categoria</label>
+                      <input type="text" name="txtCategoria" class="form-control" id="txtCategoria" placeholder="Ingrese la Categoria">
+                    </div>
+                  </div>
+
+                  <div class="col-7">
+                  <div class="form-group">
+                      <label for="txtDescripcion">Descripción</label>
+                      <input type="text" name="txtDescripcion" class="form-control" id="txtDescripcion" placeholder="Ingrese la Descripción">
+                    </div>
+                  </div>
+
+                  <div class="col-5">
+                  <div class="form-group">
+                      <label for="txtPrecio">Precio</label>
+                      <input type="text" name="txtPrecio" class="form-control" id="txtPrecio" placeholder="Ingrese el Precio">
+                    </div>
+                  </div>
+            </div>
+
+            <div class="card-footer">
+              <button type="submit" class="btn btn-success">Guardar</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+
+              </div>
+            </div>
+            <!-- /.card-body -->
+          </form>
+          <div class="modal-footer justify-content-between">
+
+          </div>
+        </div>
+        </div>
+        
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+</div>
+
+<script src="/assets/plugins/jquery-validation/jquery.validate.min.js"></script>
+
+
+<script type="text/javascript">
+  $('#Producto').submit(function(e){
+    e.preventDefault();
+
+  });
+  
+  $('#Producto').validate(
+    {
+      rules: {
+        txtCodigo: {
+          required: true
+        },
+        txtNombre: {
+          required: true
+        },
+        txtCategoria: {
+          required: true
+        },
+        txtDescripcion: {
+          required: true
+        },
+        txtPrecio: {
+          required: true
+        },
+      },
+      messages: {
+        txtCodigo: {
+          required: "Debe ingresar un codigo"
+        },
+        txtNombre: {
+          required: "Debe ingresar un nombre"
+        },
+        txtCategoria: {
+          required: "Debe ingresar una categoria"
+        },
+        txtDescripcion: {
+          required: "Debe ingresar una descripcion"
+        },
+        txtPrecio: {
+          required: "Debe ingresar un precio"
+        },
+      },
+      errorElement: 'span',
+      errorPlacement: function (error, element) {
+        error.addClass('invalid-feedback');
+        element.closest('.form-group').append(error);
+      },
+      highlight: function (element, errorClass, validClass) {
+        $(element).addClass('is-invalid');
+      },
+      unhighlight: function (element, errorClass, validClass) {
+        $(element).removeClass('is-invalid');
+      },
+
+      submitHandler : function()
+    {
+      console.log("envio correcto");
+
+
+      $.ajax(
+      {
+        method:"post",
+        data:
+            {
+              codigo:$("#txtCodigo").val(),
+              nombre:$("#txtNombre").val(),
+              categoria:$("#txtCategoria").val(),
+              descripcion:$("#txtDescripcion").val(),
+              precio:$("#txtPrecio").val()
+            },
+        url:"http://web.miapp.com/api/v1/productos"
+      }
+    )
+    .done(function(response){
+      console.log("el producto se guardo correctamente");
+
+      reloadTableProductos();
+      $("#modal1").modal('hide');      
+    });
+
+
+    }
+    });  
+</script>
+
+
+
+
