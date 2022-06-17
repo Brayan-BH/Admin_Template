@@ -28,8 +28,8 @@
         </div>
       <div class="container-fluid">
         <!-- /.row -->
-        <div class="col-12">
-            <table id="listProductos" class="display">
+        <div class="col-12 table-responsive">
+            <table id="listProductos" class="display table-hover">
                 <thead>
                     <tr>
                       <th>Codigo</th>
@@ -75,7 +75,7 @@
             { data: 'precio' },
             { 
                 render: function (data, type, row) {
-                    return "<button class=\"btn btn-warning\"><i class='fa fa-edit'></i></button> <button class=\"btn btn-danger\" onclick=\"confirmarEliminarProducto('"+row.id+"')\"><i class='fa fa-trash'></i></button>";
+                    return "<button class=\"btn btn-warning\" onclick=\"loadEditarProducto('"+row.id+"')\"><i class='fa fa-edit'></i></button> <button class=\"btn btn-danger\" onclick=\"confirmarEliminarProducto('"+row.id+"')\"><i class='fa fa-trash'></i></button>";
                 },
             },
         ],
@@ -100,8 +100,8 @@ function loadNuevoProducto(){
 
   function confirmarEliminarProducto (id)
   { 
-    $('#modalContainer').load("EliminarProducto.html",function(){
-      // console.log("cargado");
+    $('#modalContainer').load("EliminarProducto.html?v=1",function(){//parmetros?v=1.0
+      // console.log(id);
       $('#txtidDelete').val(id);
       $('#EliminarProducto').modal({
         show: true
@@ -114,26 +114,31 @@ function loadNuevoProducto(){
     tableProductos.ajax.reload();
   }
 
-  
-// function cerrar(){
-//   $('#modal1').modal('hide');
-// }
-  
-// function guardarProduct()
-//     {
-        
-//       $.ajax({
-//         method: 'POST',
-//         data : {codigo: $('#txtCodigo').val(), nombre: $('#txtNombre').val(),categoria: $('#txtCategoria').val(), descripcion: $('#txtDescripcion').val(), precio: $('#txtPrecio').val()},
-//         url: 'http://web.miapp.com/api/v1/productos',
-//       }).done(function (response) {
-//         for (i = 0; i < response.data.length; i++) 
-//         {
-//           $('#pagina').append(response.data[i].nombre + '<br>')
-//           // $("#pagina").append(response.data[i].nombre+"<br>");
-//         }
-//         // console.log(response)
-//       });
-//     }
+  function loadEditarProducto(id)
+{
+  $("#modalContainer").load("EditarProducto.html",function(){
+
+
+    $.ajax(
+      {
+        method:"get",
+        url:"http://web.miapp.com/api/v1/productos/"+id
+      }
+    )
+    .done(function(response){
+      
+      $("#txtID").val(response.data.id);     
+      $("#txtCodigo").val(response.data.codigo);
+      $("#txtNombre").val(response.data.nombre);
+      $("#txtCategoria").val(response.data.categoria);
+      $("#txtDescripcion").val(response.data.descripcion);
+      $("#txtPrecio").val(response.data.precio);
+
+      $('#mdlEditarProducto').modal({
+        show: true
+      }); 
+    });
+  });
+}
 
 </script>

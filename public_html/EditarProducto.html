@@ -1,0 +1,169 @@
+<div class="modal fade" id="mdlEditarProducto">
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+       
+        <div class="modal-header">
+          <h4 class="modal-title">Editar producto</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+        
+
+        <form id="frmNuevoProducto">
+            
+            <input type="hidden" name="txtID" id="txtID">
+            <div class="card-body">
+              
+
+              <div class="row">
+                <div class="col-5">
+                  <div class="form-group">
+                    <label for="txtCodigo">Codigo</label>
+                    <input type="text" name="txtCodigo" class="form-control" id="txtCodigo" placeholder="Ingrese el codigo">
+                  </div>
+                </div>
+
+                <div class="col-7">
+                    <div class="form-group">
+                      <label for="txtNombre">Nombre</label>
+                      <input type="text" name="txtNombre" class="form-control" id="txtNombre" placeholder="Ingrese el Nombre">
+                    </div>
+                  </div>
+
+                  <div class="col-5">
+                  <div class="form-group">
+                      <label for="txtCategoria">Categoria</label>
+                      <input type="text" name="txtCategoria" class="form-control" id="txtCategoria" placeholder="Ingrese la Categoria">
+                    </div>
+                  </div>
+
+                  <div class="col-7">
+                  <div class="form-group">
+                      <label for="txtDescripcion">Descripción</label>
+                      <input type="text" name="txtDescripcion" class="form-control" id="txtDescripcion" placeholder="Ingrese la Descripción">
+                    </div>
+                  </div>
+
+                  <div class="col-5">
+                  <div class="form-group">
+                      <label for="txtPrecio">Precio</label>
+                      <input type="text" name="txtPrecio" class="form-control" id="txtPrecio" placeholder="Ingrese el Precio">
+                    </div>
+                  </div>
+                
+              </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+              <button type="submit" class="btn btn-primary">Guardar</button>
+              <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
+            </div>
+          </form>
+
+
+
+        </div>
+        <div class="modal-footer justify-content-between">
+          
+        </div>
+
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+  
+  <script src="/assets/plugins/jquery-validation/jquery.validate.min.js"></script>
+
+<script type="text/javascript">
+
+$("#frmNuevoProducto").submit(function(e) {
+e.preventDefault();
+});
+
+$('#frmNuevoProducto').validate({
+rules: {
+  txtCodigo: {
+    required: true,
+  },
+  txtNombre: {
+    required: true,
+  },
+  txtCategoria: {
+    required: true,
+  },
+  txtDescripcion: {
+    required: true,
+  },
+  txtPrecio: {
+    required: true,
+  },
+},
+messages: {
+  txtCodigo: {
+    required: "Necesita ingresar el Código"
+  },
+  txtNombre: {
+    required: "Necesita ingresar el Nombre",
+  },
+  txtCategoria: {
+    required: "Necesita ingresar la Categoría",
+  },
+  txtDescripcion: {
+    required: "Necesita ingresar la Descripción",
+  },
+  txtPrecio: {
+    required: "Necesita ingresar el Precio",
+  },
+
+},
+errorElement: 'span',
+errorPlacement: function (error, element) {
+  error.addClass('invalid-feedback');
+  element.closest('.form-group').append(error);
+},
+highlight: function (element, errorClass, validClass) {
+  $(element).addClass('is-invalid');
+},
+unhighlight: function (element, errorClass, validClass) {
+  $(element).removeClass('is-invalid');
+},
+
+submitHandler : function()
+{
+  console.log("envio correcto");
+
+
+  $.ajax(
+  {
+    method:"put",
+    data:
+        {
+          id:$("#txtID").val(),
+          codigo:$("#txtCodigo").val(),
+          nombre:$("#txtNombre").val(),
+          categoria:$("#txtCategoria").val(),
+          descripcion:$("#txtDescripcion").val(),
+          precio:$("#txtPrecio").val()
+        },
+    url:"http://web.miapp.com/api/v1/productos"
+  }
+)
+.done(function(response){
+  console.log("el producto se guardo correctamente");
+  
+  reloadTableProductos();
+  $("#mdlEditarProducto").modal('hide');      
+
+});
+
+
+}
+});
+
+</script>

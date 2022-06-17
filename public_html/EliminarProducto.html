@@ -45,20 +45,20 @@
   $('#frmEliminarProducto').submit(function(e){
     e.preventDefault();
 
-  });
-
-      $.ajax(
+    $.ajax(
       {
         method:"delete",
-        url:"http://web.miapp.com/api/v1/productos"+$('#txtidDelete').val()
+        url:"http://web.miapp.com/api/v1/productos/"+$('#txtidDelete').val()
       }
     )
     .done(function(response){
-      console.log("el producto se guardo correctamente");
+      // console.log("el producto se elimino correctamente");
 
       reloadTableProductos();
       $("#EliminarProducto").modal('hide');      
     });
+
+  });
  
 </script>
 
