@@ -1,0 +1,240 @@
+
+  <div class="modal fade" id="modalVentasEditar">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Registro de Ventas</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="false">&times;</span>
+            </button>
+          </div>
+        <div class="modal-body">
+
+          <!-- form start -->
+          <form  id="formEditVenta">
+
+            <input type="hidden" name="txtIdVenta" id="txtIdVenta">
+
+            <div class="card-body">
+            <div class="row">
+
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="txtNumVenta">N° Venta</label>
+                    <input type="text" name="txtNumVenta" class="form-control" id="txtNumVenta" placeholder="Ingrese el codigo">
+                  </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                      <label for="txtProductos">Producto(s)</label>
+                      <input type="text" name="txtProductos" class="form-control" id="txtProductos" placeholder="Ingrese el Nombre">
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="txtDescripcion">Descripción</label>
+                        <input type="text" name="txtDescripcion" class="form-control" id="txtDescripcion" placeholder="Ingrese la Descripción">
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="txtCantidad">Cantidad</label>
+                        <input type="number" name="txtCantidad" class="form-control" id="txtCantidad" placeholder="Ingrese la Cantidad">
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="txtUniPrecio">Precio Unitario</label>
+                        <input type="text" name="txtUniPrecio" class="form-control" id="txtUniPrecio" placeholder="Ingrese el Precio Unitario">
+                    </div>
+                </div>
+                
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="txtTotPrecio">Precio Total</label>
+                        <input type="text" name="txtTotPrecio" class="form-control" id="txtTotPrecio" placeholder="Ingrese el Precio Total">
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="txtFechaOperacion">Fecha de Operacion</label>
+                        <input type="date" name="txtFechaOperacion" class="form-control" id="txtFechaOperacion" placeholder="Ingrese la fecha de Operacion">
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="txtMetodoPago">Metodo de Pago</label>
+                        <input type="text" name="txtMetodoPago" class="form-control" id="txtMetodoPago" placeholder="Ingrese el metodo de Pago">
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="txtNombreCliente">Nombre del Cliente</label>
+                        <input type="text" name="txtNombreCliente" class="form-control" id="txtNombreCliente" placeholder="Ingrese el Nombre">
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="txtDocIdentidad">Doc. de Identidad</label>
+                        <input 
+                        type="text"
+                        name="txtDocIdentidad" class="form-control" id="txtDocIdentidad" placeholder="Ingrese el Doc. Identidad"
+                        >
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer">
+              <button type="submit" class="btn btn-primary">Guardar</button>
+              <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cancelar</button>
+            </div>
+
+              </div>
+            </div>
+            <!-- /.card-body -->
+          </form>
+          <div class="modal-footer justify-content-between">
+
+          </div>
+        </div>
+        </div>
+        
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+</div>
+
+<script src="/assets/plugins/jquery-validation/jquery.validate.min.js"></script>
+
+<script type="text/javascript">
+ 
+$('#formEditVenta').submit(function(e){
+    e.preventDefault();
+  });
+  
+  $('#formEditVenta').validate(
+    {
+      rules: {
+        txtNumVenta: {
+          required: true
+        },
+        txtProductos:{
+            required: true
+        },
+        txtDescripcion:{
+            required: true
+        },
+        txtCantidad:{
+            required: true
+        },
+        txtUniPrecio:{
+            required: true
+        },
+        txtTotPrecio:{
+            required: true
+        },
+        txtFechaOperacion:{
+            required: true
+        },
+        txtMetodoPago:{
+            required: true
+        },
+        txtNombreCliente:{
+            required: true
+        },
+        txtDocIdentidad:{
+            required: true
+        }
+      },
+      messages: {
+        txtNumVenta: {
+          required: "Debe ingresar el numero de venta"
+        },
+        txtProductos:{
+            required: "Debe ingresar un producto"
+        },
+        txtDescripcion:{
+            required: "Debe ingresar la descripcion"
+        },
+        txtCantidad:{
+            required: "Debe ingresar la cantidad"
+        },
+        txtUniPrecio:{
+            required: "Debe ingresar el precio unitario"
+        },
+        txtTotPrecio:{
+            required: "Debe ingresar el precio total"
+        },
+        txtFechaOperacion:{
+            required: "Debe ingresar la fecha de operacion"
+        },
+        txtMetodoPago:{
+            required: "Debe ingresar el metodo de pago"
+        },
+        txtNombreCliente:{
+            required: "Debe ingresar el nombre del cliente"
+        },
+        txtDocIdentidad:{
+            required: "Debe ingresar el documento de identidad"
+        },
+    
+      },
+      errorElement: 'span',
+      errorPlacement: function (error, element) {
+        error.addClass('invalid-feedback');
+        element.closest('.form-group').append(error);
+      },
+      highlight: function (element, errorClass, validClass) {
+        $(element).addClass('is-invalid');
+      },
+      unhighlight: function (element, errorClass, validClass) {
+        $(element).removeClass('is-invalid');
+      },
+
+      submitHandler : function()
+    {
+      console.log("envio correcto");
+
+
+      $.ajax(
+      {
+        method:"put",
+        data:
+            {
+                id:$('#txtIdVenta').val(),
+                codigo_venta: $('#txtNumVenta').val(),
+                nombre_producto: $('#txtProductos').val(),
+                descripcion: $('#txtDescripcion').val(),
+                cantidad: $('#txtCantidad').val(),
+                precio_unitario: $('#txtUniPrecio').val(),
+                precio_total: $('#txtTotPrecio').val(),
+                fecha_operacion: $('#txtFechaOperacion').val(),
+                metodo_pago: $('#txtMetodoPago').val(),
+                nombre_cliente: $('#txtNombreCliente').val(),
+                documento_identidad: $('#txtDocIdentidad').val()
+            },
+        url:"http://web.miapp.com/api/v1/ventas"
+      }
+    )
+    .done(function(response){
+      console.log("La Venta se guardo correctamente");
+
+      reloadTableVentas();
+      $("#modalVentasEditar").modal('hide');      
+    });
+
+
+    }
+    });  
+</script>

@@ -26,7 +26,7 @@
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-info navbar-light" style="background-color: #ef233c">
+  <nav class="main-header navbar navbar-expand navbar-info navbar-light" style="background-color: #da627d">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -169,7 +169,7 @@
 
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #114b5f;">
+  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #1985a1;">
     <!-- Brand Logo -->
     <a href="../index3.html" class="brand-link">
       <img src="/assets/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">

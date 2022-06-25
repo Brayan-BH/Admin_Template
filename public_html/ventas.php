@@ -1,17 +1,28 @@
 <?php include('Templates/header.php') ?>
 
-<!-- Incio del contenido principal -->
+<script type="text/javascript">
 
+    var tableVentas = null;
+
+</script>
+<!-- Incio del contenido principal -->
+<div id="modVentas">
+  
+</div>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Main content -->
     <section class="content">
-        <h1>Ventas</h1>
-        <!-- <div class="mb-3">
-            <button class="btn btn-success" onclick="guardarVenta()">Agregar</button>
+    <h1 class="title mx-3">VENTAS</h1>
+        <div class="my-3">
+            <!-- <button class="btn btn-success" onclick="guardarProduct()">Agregar</button>
             <button class="btn btn-warning">Actualizar</button>
-            <button class="btn btn-danger">Eliminar</button>
-        </div> -->
+            <button class="btn btn-danger">Eliminar</button> -->
+            <button type="button" class="btn btn-default mx-3"onclick="loadNuevaVenta()" style="background-color: #00afb9 ;">
+              Nueva Venta
+              <i class="fa fa-plus-circle"></i>
+            </button>
+        </div>
       <div class="container-fluid">
         <!-- /.row -->
         <div class="col-12">
@@ -28,32 +39,11 @@
                         <th>Metodo de Pago</th>
                         <th>Nombre de Cliente</th>
                         <th>Documento de Identidad</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
             </table>
       </div>
-      <!-- <div class="col-4">
-            <input type="text" name="txtCodVenta" id="txtCodVenta">
-            <label for="txtCodVenta">Codigo Venta</label>
-            <input type="text" name="txtProducto" id="txtProducto">
-            <label for="txtProducto">Nombre Producto</label>
-            <input type="text" name="txtDescripcion" id="txtDescripcion">
-            <label for="txtDescripcion">Descripcion</label>
-            <input type="text" name="txtCantidad" id="txtCantidad">
-            <label for="txtCantidad">Cantidad</label>
-            <input type="text" name="txtPrecioUnitario" id="txtPrecioUnitario">
-            <label for="txtPrecioUnitario">Precio Unitario</label>
-            <input type="text" name="txtPrecioTotal" id="txtPrecioTotal">
-            <label for="txtPrecioTotal">Precio Total</label>
-            <input type="text" name="txtFechaOperacion" id="txtFechaOperacion">
-            <label for="txtFechaOperacion">Fecha Operacion</label>
-            <input type="text" name="txtMetodoPago" id="txtMetodoPago">
-            <label for="txtMetodoPago">Metodo de Pago</label>
-            <input type="text" name="txtNombreCliente" id="txtNombreCliente">
-            <label for="txtNombreCliente">Nombre Cliente</label>
-            <input type="text" name="txtDocumentoIdentidad" id="txtDocumentoIdentidad">
-            <label for="txtDocumentoIdentidad">Documento Identidad</label>
-        </div> -->
       <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
@@ -63,11 +53,12 @@
 <!-- Fin del contenido principal -->
 
 <?php include('Templates/footer.php') ?>
+
 <script type="text/javascript">
   
 $(document).ready(function(){
 
-$('#listVentas').DataTable( {
+tableVentas =  $('#listVentas').DataTable( {
         "ajax":{
             type: 'get',
             url: "http://web.miapp.com/api/v1/ventas",
@@ -85,6 +76,13 @@ $('#listVentas').DataTable( {
             { data: 'metodo_pago' },
             { data: 'nombre_cliente' },
             { data: 'documento_identidad' },
+            {
+              render: function (data, type, row) {
+
+                return "<button class=\"btn btn-warning\" onclick=\"loadEditarVentas('"+row.id+"')\"><i class='fa fa-edit'></i></button> <button class=\"btn btn-danger\" onclick=\"confirmarEliminarVenta('"+row.id+"')\"><i class='fa fa-trash'></i></button>";
+                   
+                },
+            }
         ],
 
         dom: 'Bfrtip',
@@ -95,21 +93,62 @@ $('#listVentas').DataTable( {
     });
 });
 
-function guardarVenta()
-    {
-        
-      $.ajax({
-        method: 'POST',
-        data : {codigo_venta: $('#txtCodVenta').val(),nombre_producto: $('#txtProducto').val(),descripcion: $('#txtDescripcion').val(),cantidad: $('#txtCantidad').val(),precio_unitario: $('#txtPrecioUnitario').val(),precio_total: $('#txtPrecioTotal').val(),fecha_operacion: $('#txtFechaOperacion').val(),metodo_pago: $('#txtMetodoPago').val(),nombre_cliente: $('#txtNombreCliente').val(),documento_identidad: $('#txtDocumentoIdentidad').val()},
-        url: 'http://web.miapp.com/api/v1/ventas',
-      }).done(function (response) {
-        for (i = 0; i < response.data.length; i++) 
-        {
-          $('#pagina').append(response.data[i].nombre + '<br>')
-          // $("#pagina").append(response.data[i].nombre+"<br>");
-        }
-        // console.log(response)
+function loadNuevaVenta(){
+  $('#modVentas').load("NuevaVenta.html",function(){
+      // console.log("cargado");
+      $('#modalVentas').modal({
+        show: true
       });
-    }
+    });
+  }
+
+  function confirmarEliminarVenta (id)
+  { 
+    $('#modVentas').load("EliminarVenta.html?v=1",function(){//parmetros?v=1.0
+      // console.log(id);
+      $('#txtidDeleteVenta').val(id);
+      $('#EliminarVenta').modal({
+        show: true
+      });
+    });
+  }
+
+function reloadTableVentas ()
+{
+  tableVentas.ajax.reload();
+}
+
+function loadEditarVentas (id)
+{  
+  $("#modVentas").load("EditarVenta.html",function(){
+
+
+$.ajax(
+  {
+    method:"get",
+    url:"http://web.miapp.com/api/v1/ventas/"+id
+  }
+)
+.done(function(response){
+  
+  $('#txtIdVenta').val(response.data.id);
+  $('#txtNumVenta').val(response.data.codigo_venta);
+  $('#txtProductos').val(response.data.nombre_producto);
+  $('#txtDescripcion').val(response.data.descripcion);
+  $('#txtCantidad').val(response.data.cantidad);
+  $('#txtUniPrecio').val(response.data.precio_unitario);
+  $('#txtTotPrecio').val(response.data.precio_total);
+  $('#txtFechaOperacion').val(response.data.fecha_operacion);
+  $('#txtMetodoPago').val(response.data.metodo_pago);
+  $('#txtNombreCliente').val(response.data.nombre_cliente);
+  $('#txtDocIdentidad').val(response.data.documento_identidad);
+
+  $('#modalVentasEditar').modal({
+    show: true
+  }); 
+});
+});
+    
+}
 
 </script>

@@ -59,6 +59,7 @@
 
 
  $(document).ready(function(){
+ 
 
   tableProductos = $('#listProductos').DataTable( {
         "ajax":{
@@ -84,9 +85,13 @@
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
         ]
-
+        // pagingType: 'full_numbers',
+        // scrollY: '200px',
+        // scrollCollapse: true,
+        // paging: false,
     });
-});
+  });
+  
 
 
 function loadNuevoProducto(){
