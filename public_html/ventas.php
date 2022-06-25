@@ -25,7 +25,7 @@
         </div>
       <div class="container-fluid">
         <!-- /.row -->
-        <div class="col-12">
+        <div class="col-12 table-responsive">
             <table id="listVentas" class="display">
                 <thead>
                     <tr>

@@ -37,6 +37,7 @@
                       <th>Categoria</th>
                       <th>Descripcion</th>
                       <th>Precio</th>
+                      <th>Stock</th>
                       <th>Acciones</th>
                         
                     </tr>
@@ -74,6 +75,7 @@
             { data: 'categoria' },
             { data: 'descripcion' },
             { data: 'precio' },
+            { data: 'stock' },
             { 
                 render: function (data, type, row) {
                     return "<button class=\"btn btn-warning\" onclick=\"loadEditarProducto('"+row.id+"')\"><i class='fa fa-edit'></i></button> <button class=\"btn btn-danger\" onclick=\"confirmarEliminarProducto('"+row.id+"')\"><i class='fa fa-trash'></i></button>";
@@ -138,6 +140,7 @@ function loadNuevoProducto(){
       $("#txtCategoria").val(response.data.categoria);
       $("#txtDescripcion").val(response.data.descripcion);
       $("#txtPrecio").val(response.data.precio);
+      $("#txtStock").val(response.data.stock);
 
       $('#mdlEditarProducto').modal({
         show: true

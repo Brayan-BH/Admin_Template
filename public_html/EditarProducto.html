@@ -54,6 +54,14 @@
                       <input type="text" name="txtPrecio" class="form-control" id="txtPrecio" placeholder="Ingrese el Precio">
                     </div>
                   </div>
+
+                  <div class="col-5">
+                  <div class="form-group">
+                      <label for="txtStock">Stock</label>
+                      <input type="text" name="txtStock" class="form-control" id="txtStock" placeholder="Ingrese el Stock">
+                    </div>
+                  </div>
+
                 
               </div>
             </div>
@@ -103,6 +111,9 @@ rules: {
   txtPrecio: {
     required: true,
   },
+  txtStock: {
+    required: true,
+  },
 },
 messages: {
   txtCodigo: {
@@ -120,7 +131,9 @@ messages: {
   txtPrecio: {
     required: "Necesita ingresar el Precio",
   },
-
+  txtStock: {
+    required: "Necesita ingresar el Stock",
+  },
 },
 errorElement: 'span',
 errorPlacement: function (error, element) {
@@ -149,7 +162,8 @@ submitHandler : function()
           nombre:$("#txtNombre").val(),
           categoria:$("#txtCategoria").val(),
           descripcion:$("#txtDescripcion").val(),
-          precio:$("#txtPrecio").val()
+          precio:$("#txtPrecio").val(),
+          stock:$("#txtStock").val()
         },
     url:"http://web.miapp.com/api/v1/productos"
   }

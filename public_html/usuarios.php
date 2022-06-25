@@ -6,11 +6,12 @@
 <div class="content-wrapper">
     <!-- Main content -->
     <section class="content">
-        <h1>Usuarios</h1>
-        <div class="mb-3">
-            <button class="btn btn-success" onclick="guardarUsuario()">Agregar</button>
-            <button class="btn btn-warning">Actualizar</button>
-            <button class="btn btn-danger">Eliminar</button>
+        <h1 class="title mx-3">USUARIOS</h1>
+        <div class="my-3">
+        <button type="button" class="btn btn-default mx-3" onclick="loadNuevoUsuario()" style="background-color: #00afb9 ;">
+              Agregar Usuario
+              <i class="fa fa-plus-circle"></i>
+            </button>
 
         </div>
       <div class="container-fluid">
@@ -28,7 +29,7 @@
                 </thead>
             </table>
         </div>
-        <div class="col-4">
+        <!-- <div class="col-4">
             <input type="text" name="txtNombre" id="txtNombre">
             <label for="txtNombre">Nombre</label>
             <input type="text" name="txtApellidos" id="txtApellidos">
@@ -39,7 +40,7 @@
             <label for="txtRol">Rol</label>
             <input type="text" name="txtEstado" id="txtEstado">
             <label for="txtEstado">Estado</label>
-        </div>
+        </div> -->
       </div>
       <!-- /.container-fluid -->
     </section>
