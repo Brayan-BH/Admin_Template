@@ -14,7 +14,7 @@
             <div class="small-box" style="background: #e9d8a6;">
               <div class="inner">
                 <h3>50</h3>
-                <p>Usuarios</p>
+                <p>Clientes</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>

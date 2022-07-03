@@ -1,0 +1,170 @@
+<div class="modal fade" id="modalEditarCliente">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Registro de Productos</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="false">&times;</span>
+            </button>
+          </div>
+        <div class="modal-body">
+
+          <!-- form start -->
+          <form  id="formEditarCliente">
+            <input type="hidden" name="txtIdCliente" id="txtIdCliente">
+
+            <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-7">
+                    <div class="form-group">
+                      <label for="txtCliente">Nombre Cliente</label>
+                      <input type="text" name="txtCliente" class="form-control" id="txtCliente" placeholder="Ingrese el Nombre">
+                    </div>
+                </div>
+
+                <div class="col-7">
+                    <div class="form-group">
+                      <label for="txtCorreo">Correo</label>
+                      <input type="email" name="txtCorreo" class="form-control" id="txtCorreo" placeholder="Ingrese el Correo">
+                    </div>
+                </div>
+
+                <div class="col-7">
+                    <div class="form-group">
+                      <label for="txtDocIdentidad">Documento Identidad</label>
+                      <input type="text" name="txtDocIdentidad" class="form-control" id="txtDocIdentidad" placeholder="Ingrese el doc Identidad">
+                    </div>
+                </div>
+
+                <div class="col-7">
+                    <div class="form-group">
+                      <label for="txtDireccion">Dirección</label>
+                      <input type="text" name="txtDireccion" class="form-control" id="txtDireccion" placeholder="Ingrese la direccion">
+                    </div>
+                </div>
+
+                <div class="col-7">
+                    <div class="form-group">
+                      <label for="txtTelefono">Telefono</label>
+                      <input type="tel" name="txtTelefono" class="form-control" id="txtTelefono" placeholder="Ingrese el telefono">
+                    </div>
+                </div>
+
+                  
+            </div>
+
+            <div class="card-footer">
+              <button type="submit" class="btn btn-success">Guardar</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            </div>
+
+              </div>
+            </div>
+            <!-- /.card-body -->
+          </form>
+          <div class="modal-footer justify-content-between">
+
+          </div>
+        </div>
+        </div>
+        
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+</div>
+
+<script src="/assets/plugins/jquery-validation/jquery.validate.min.js"></script>
+
+<script type="text/javascript">
+
+$('#formEditarCliente').submit(function(e){
+    e.preventDefault();
+
+  });
+
+  $('#formEditarCliente').validate(
+    {
+      rules: {
+        txtCliente: {
+          required: true,
+        },
+        txtCorreo: {
+          required: true,
+        },
+        txtDocIdentidad: {
+          required: true,
+        },
+        txtDireccion: {
+          required: true,
+        },
+        txtTelefono: {
+          required: true,
+        },
+      },
+      messages: {
+        txtNombre: {
+          required: "Ingrese el nombre del cliente",
+        },
+        txtCorreo: {
+          required: "Ingrese el correo del cliente",
+        },
+        txtDocIdentidad: {
+          required: "Ingrese el doc identidad del cliente",
+        },
+        txtDireccion: {
+          required: "Ingrese la direccion del cliente",
+        },
+        txtTelefono: {
+          required: "Ingrese el telefono del cliente",
+        },
+      },
+      errorElement: 'span',
+      errorPlacement: function (error, element) {
+        error.addClass('invalid-feedback');
+        element.closest('.form-group').append(error);
+      },
+      highlight: function (element, errorClass, validClass) {
+        $(element).addClass('is-invalid');
+      },
+      unhighlight: function (element, errorClass, validClass) {
+        $(element).removeClass('is-invalid');
+      },
+
+      submitHandler : function()
+    {
+      console.log("envio correcto");
+
+
+      $.ajax(
+      {
+        method:"put",
+        data:
+            {
+                idcliente:$('#txtIdCliente').val(),
+                nombre:$("#txtCliente").val(),
+                correo:$("#txtCorreo").val(),
+                documento_identidad:$("#txtDocIdentidad").val(),
+                direccion:$("#txtDireccion").val(),
+                telefono:$("#txtTelefono").val()
+            },
+        url:"http://web.miapp.com/api/v1/clientes"
+      }
+    )
+    .done(function(response){
+      console.log("el Cliente se guardo correctamente");
+
+      reloadTableClientes();
+      $("#modalEditarCliente").modal('hide');      
+    });
+
+
+    }
+    });  
+
+
+</script>

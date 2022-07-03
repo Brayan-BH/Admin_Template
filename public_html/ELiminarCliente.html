@@ -1,0 +1,67 @@
+
+  <div class="modal fade" id="EliminarCliente">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Eliminar Cliente</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="false">&times;</span>
+            </button>
+          </div>
+        <div class="modal-body">
+
+          <!-- form start -->
+          <form  id="frmEliminarCliente">
+            <div class="card-body">
+            
+            <input type="hidden" name="txtDeleteCliente" id="txtDeleteCliente">
+            <h6>¿Estas Seguro de Eliminar al cliente?</h6>
+
+              <button type="submit" class="btn btn-success">Si</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+
+              </div>
+            </div>
+            <!-- /.card-body -->
+          </form>
+          <div class="modal-footer justify-content-between">
+
+          </div>
+        </div>
+        </div>
+        
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+</div>
+
+<script src="/assets/plugins/jquery-validation/jquery.validate.min.js"></script>
+
+
+<script type="text/javascript">
+  $('#frmEliminarCliente').submit(function(e){
+    e.preventDefault();
+
+    $.ajax(
+      {
+        method:"delete",
+        url:"http://web.miapp.com/api/v1/clientes/"+$('#txtDeleteCliente').val()
+      }
+    )
+    .done(function(response){
+      // console.log("el producto se elimino correctamente");
+
+      reloadTableClientes();
+      $("#EliminarCliente").modal('hide');      
+    });
+
+  });
+ 
+</script>
+
+
+
+

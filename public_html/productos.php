@@ -28,7 +28,7 @@
         </div>
       <div class="container-fluid">
         <!-- /.row -->
-        <div class="col-12 table-responsive">
+        <div class="col-12 table-responsive" id="toolbar">
             <table id="listProductos" class="display table-hover">
                 <thead>
                     <tr>
@@ -38,7 +38,7 @@
                       <th>Descripcion</th>
                       <th>Precio</th>
                       <th>Stock</th>
-                      <th>Acciones</th>
+                      <th class="no-export">Acciones</th>
                         
                     </tr>
                 </thead>
@@ -50,7 +50,6 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  
 
 <!-- Fin del contenido principal -->
 
@@ -82,15 +81,113 @@
                 },
             },
         ],
-
-        dom: 'Bfrtip',
+        responsive: false,
+        fixedColumns: true,
+        fixedHeader: true,
+        scrollCollapse: true,
+        autoWidth: true,
+        scrollCollapse: true,
+        info: true,
+        // lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+        // dom: 'lfBrtip',
+        dom: "B<'col-md-2'l>ftipr",
         buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-        // pagingType: 'full_numbers',
-        // scrollY: '200px',
-        // scrollCollapse: true,
-        // paging: false,
+          {
+            extend: 'pdfHtml5',
+            title: 'Reporte de Productos',
+            className: 'btn bg-red mb-3',
+            text: "<i class='fas fa-file-pdf fa-2x bg-red'></i>",
+            exportOptions: 
+            {
+              // columns: [0, 1, 2, 3, 4, 5] //exportar solo la primera y segunda columna
+              columns: ":not(.no-export)" //exportar toda columna que no tenga la clase no-exportar
+            },
+            customize:function(doc) 
+            {
+              doc.styles.title = {
+                  color: '#4c8aa0',
+                  fontSize: '20',
+                  alignment: 'center'
+              },
+              doc.styles['td:nth-child(2)'] = { 
+                  width: '100px',
+                  'max-width': '100px'
+              },
+              doc.styles.tableHeader = {
+                  fillColor:'#4c8aa0',
+                  color:'white',
+                  alignment:'center'
+              },
+              doc.content[1].margin = [ 100, 0, 100, 0 ]
+            }
+          },
+          {
+            extend: 'excelHtml5',
+            title: 'Reporte de Productos',
+            className: 'btn bg-green mb-3',
+            text: "<i class='fas fa-file-excel fa-2x bg-green'></i>",
+            exportOptions:
+            {
+              columns: ":not(.no-export)" //exportar toda columna que no tenga la clase no-exportar
+            },
+          },
+          {
+            extend: 'csvHtml5',
+            title: 'Reporte de Productos',
+            className: 'btn bg-blue mb-3',
+            text: "<i class='fas fa-file-csv fa-2x bg-blue'></i>",
+            exportOptions:
+            {
+              columns: ":not(.no-export)" //exportar toda columna que no tenga la clase no-exportar
+            },
+          },
+          {
+            extend: 'print',
+            title: 'Reporte de Productos',
+            className: 'btn bg-orange mb-3',
+            text: "<i class='fas fa-print fa-2x bg-orange'></i>",
+            exportOptions:
+            {
+              columns: ":not(.no-export)" //exportar toda columna que no tenga la clase no-exportar
+            },
+          },
+          { 
+            extend: 'copy',
+            className: 'btn bg-purple mb-3',
+            text: "<i class='fas fa-copy fa-2x bg-purple'></i>",
+            exportOptions:
+            {
+              columns: ":not(.no-export)" //exportar toda columna que no tenga la clase no-exportar
+            },
+          }
+
+        ],
+        language: {
+            "sProcessing":     "Procesando...",
+            "sLengthMenu":     "Mostrar _MENU_ registros",
+            "sZeroRecords":    "No se encontraron resultados",
+            "sEmptyTable":     "Ningún dato disponible en esta tabla",
+            "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix":    "",
+            "sSearch":         "Buscar:",
+            "sUrl":            "",
+            "sInfoThousands":  ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                          "sFirst":    "Primero",
+                          "sLast":     "Último",
+                          "sNext":     "Siguiente",
+                          "sPrevious": "Anterior"
+                        },
+            "oAria":    {
+                        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                        },
+            "decimal": ",",
+            "thousands": "."
+          },
     });
   });
   

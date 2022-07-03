@@ -1,3 +1,15 @@
+<?php
+    //Bloquear la informacion
+    session_start();
+    if (!isset($_SESSION['usuario'])) {
+        header('Location:login.php');
+    }else {
+        if ($_SESSION['usuario']=="ok") {
+            $nombreUsuario = $_SESSION["nombreUsuario"];
+        }
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -208,7 +220,7 @@
             <a href="usuarios.php" class="nav-link ">
               <i class="nav-icon fas fa-users"></i>
               <p>
-                Usuarios
+                Clientes
               </p>
             </a>
           </li>
